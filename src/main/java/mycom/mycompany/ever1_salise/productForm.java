@@ -54,6 +54,7 @@ public class productForm extends javax.swing.JFrame {
         editBtn = new javax.swing.JButton();
         stockInBtn = new javax.swing.JButton();
         delBtn = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -99,10 +100,7 @@ public class productForm extends javax.swing.JFrame {
 
         pTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "PType", "PDesc", "Supplier", "TotQuantity", "Orders"
@@ -148,14 +146,17 @@ public class productForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel11.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 0, 36)); // NOI18N
+        jLabel11.setText("Products Stock-In/Stock-Out");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,10 +164,10 @@ public class productForm extends javax.swing.JFrame {
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5))
                                 .addGap(12, 12, 12)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(supplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(productDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(productPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(productDesc, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                                    .addComponent(supplier)
+                                    .addComponent(productPrice)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
@@ -175,15 +176,17 @@ public class productForm extends javax.swing.JFrame {
                                     .addComponent(jLabel6))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(dateReceived, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(thresholdQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(quantityOne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(9, 9, 9)
-                                        .addComponent(jLabel10)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(dateReceived, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(totalCost, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                .addComponent(quantityOne, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel10)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(quantityTwo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(totalCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(thresholdQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(quantityTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
@@ -191,24 +194,28 @@ public class productForm extends javax.swing.JFrame {
                                 .addGap(47, 47, 47)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(productType, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(productID, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(stockInBtn)
+                                    .addComponent(productID, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(stockInBtn)
+                                .addGap(18, 18, 18)
+                                .addComponent(editBtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(delBtn)))
                         .addGap(18, 18, 18)
-                        .addComponent(editBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(delBtn)
-                        .addGap(28, 28, 28)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(213, 213, 213)
+                        .addComponent(jLabel11)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
+                        .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(productID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -246,13 +253,13 @@ public class productForm extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(dateReceived, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(stockInBtn)
                             .addComponent(editBtn)
                             .addComponent(delBtn)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -260,7 +267,6 @@ public class productForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     String[][] productData = new String [100][9];
-    int[] productIDArray = new int[100];
     int pnum = 0;
     private void quantityOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantityOneActionPerformed
         // TODO add your handling code here:
@@ -272,10 +278,42 @@ public class productForm extends javax.swing.JFrame {
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         // TODO add your handling code here:
+         int[] selectedRow = pTable.getSelectedRows();
+        String editableID = productID.getText();
+        for(int i = 0; i < pnum; i++){
+        if (productData[i][0].equals(editableID)){
+            productData[i][1] = productType.getText();
+            productData[i][2] = productDesc.getText();
+            productData[i][3] = supplier.getText();
+            productData[i][4] = productPrice.getText();
+            productData[i][5] = thresholdQuantity.getText();
+            productData[i][6] = Integer.toString(Integer.parseInt(quantityOne.getText())+Integer.parseInt(quantityTwo.getText()));
+            productData[i][7] = totalCost.getText();
+            productData[i][8] = dateReceived.getText();
+            refreshTable();
+            JOptionPane.showMessageDialog(editBtn,"Information Edited","Customer Form", JOptionPane.INFORMATION_MESSAGE);
+            productID.setText(Integer.toString(findID()));
+            }
+        }
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void stockInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockInBtnActionPerformed
+        DefaultTableModel productTable = (DefaultTableModel) pTable.getModel();
         
+        productData[pnum][0] = productID.getText();
+        productData[pnum][1] = productType.getText();
+        productData[pnum][2] = productDesc.getText();
+        productData[pnum][3] = supplier.getText();
+        productData[pnum][4] = productPrice.getText();
+        productData[pnum][5] = thresholdQuantity.getText();
+        productData[pnum][6] = quantityOne.getText();
+        productData[pnum][7] = totalCost.getText();
+        productData[pnum][8] = dateReceived.getText();
+        productTable.addRow(new String[]{productData[pnum][0],productData[pnum][1],productData[pnum][2],productData[pnum][3],productData[pnum][6],productData[pnum][7]});        System.out.print(pnum);
+        productID.setText(Integer.toString(findID()));
+        JOptionPane.showMessageDialog(stockInBtn,"Information Saved","Customer Form", JOptionPane.INFORMATION_MESSAGE);
+        refreshTable();
+        pnum++;
     }//GEN-LAST:event_stockInBtnActionPerformed
 
     private void delBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBtnActionPerformed
@@ -284,42 +322,41 @@ public class productForm extends javax.swing.JFrame {
 
     private void pTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pTableMouseClicked
         // TODO add your handling code here:
-        int[] selectedRow = pTable.getSelectedRows();
-        int pID;
-        for (int i = 0; i < pnum; i++){
-            if (Integer.valueOf(productID.getText()) == productIDArray[i]){
-                pID = i;
-            }
-        }
+         int[] selectedRow = pTable.getSelectedRows();
+         String selectedID;
         productID.setText(pTable.getValueAt(selectedRow[0],0).toString());
         productType.setText(pTable.getValueAt(selectedRow[0],1).toString());
         productDesc.setText(pTable.getValueAt(selectedRow[0],2).toString());
         supplier.setText(pTable.getValueAt(selectedRow[0],3).toString());
-        productPrice.setText(productData[pID][4]);
-        thresholdQuantity.setText(productData[pID][5]);
-        quantityOne.setText(productData[pID][6]);
-        totalCost.setText(productData[pID][7]);
-        dateReceived.setText(productData[pID][8]);
+        selectedID = productID.getText();
+        quantityTwo.setText("0");
+        for (int i = 0; i < pnum; i++){
+            if (productData[i][0].equals(selectedID)){
+                productPrice.setText(productData[i][4]);
+                thresholdQuantity.setText(productData[i][5]);
+                totalCost.setText(productData[i][7]);
+                dateReceived.setText(productData[i][8]);
+                quantityOne.setText(productData[i][6]);
+            }
+        }
+        
+        
     }//GEN-LAST:event_pTableMouseClicked
 
     private void delBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delBtnMouseClicked
         // TODO add your handling code here:
-        int deletableID = Integer.valueOf(productID.getText());
-        String errorMessage = "Entry for ID #" + deletableID + " does not exist";
-       for (int i = 0; i < pnum; i++){
-            if (deletableID == productIDArray[i]){
-        productData[i][0] = null;
-        productData[i][1] = null;
-        productData[i][2] = null;
-        productData[i][3] = null;
-        productData[i][4] = null;
-        productData[i][5] = null;
-        productData[i][6] = null;
-        productData[i][7] = null;
-        productData[i][8] = null;
-        productIDArray[i] = 0;
-        JOptionPane.showMessageDialog(delBtn,"Information Deleted","Product Form", JOptionPane.INFORMATION_MESSAGE);
-        refreshTable();
+        String deletableID = productID.getText();
+        for (int i = 0; i < pnum; i++){
+            if ( productData[i][0].equals(deletableID)){
+                for (int j = i; j < pnum - 1; j++){
+                    productData[j] = productData[j+1];
+                }
+                // sets the last row to blank just in case
+                productData[pnum-1] = new String[9];
+                pnum--; 
+                break;
+            }
+        }
         productID.setText(Integer.toString(findID()));
         productType.setText(null);
         productDesc.setText(null);
@@ -330,55 +367,19 @@ public class productForm extends javax.swing.JFrame {
         quantityTwo.setText(null);
         totalCost.setText(null);
         dateReceived.setText(null);
-        }
-        else
-            JOptionPane.showMessageDialog(delBtn,errorMessage,"Product Form", JOptionPane.WARNING_MESSAGE );
-       }    
+        refreshTable();
     }//GEN-LAST:event_delBtnMouseClicked
 
     private void stockInBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_stockInBtnMouseClicked
         // TODO add your handling code here:
-        int nonExistingID = findID();
-        productData[nonExistingID][0] = Integer.toString(nonExistingID+1);
-        productData[nonExistingID][1] = productType.getText();
-        productData[nonExistingID][2] = productDesc.getText();
-        productData[nonExistingID][3] = supplier.getText();
-        productData[nonExistingID][4] = productPrice.getText();
-        productData[nonExistingID][5] = thresholdQuantity.getText();
-        productData[nonExistingID][6] = quantityOne.getText()+quantityTwo.getText();
-        productData[nonExistingID][7] = totalCost.getText();
-        productData[nonExistingID][8] = dateReceived.getText();
-        productIDArray[nonExistingID] = nonExistingID+1;
-        refreshTable();
-       pnum++;
-       JOptionPane.showMessageDialog(stockInBtn,"Information Saved","Product Form", JOptionPane.INFORMATION_MESSAGE);
-       productID.setText(Integer.toString(nonExistingID+1));
-       productType.setText(null);
-       productDesc.setText(null);
-       supplier.setText(null);
-       productPrice.setText(null);
-       thresholdQuantity.setText(null);
-       quantityOne.setText(null);
-       quantityTwo.setText(null);
-       totalCost.setText(null);
-       dateReceived.setText(null);
+        
     }//GEN-LAST:event_stockInBtnMouseClicked
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
         productID.setText(Integer.toString(findID()));
     }//GEN-LAST:event_formWindowActivated
-     public int findID(){
-        int idFound = 0;
-        for(int i = 0; i <= pnum;i++){
-            idFound = i;
-            if (productIDArray[i] == 0){
-                return idFound;
-            }            
-        }
-        return idFound;
-    }
-     public void refreshTable(){
+     public  void refreshTable(){
     DefaultTableModel productTable = (DefaultTableModel) pTable.getModel();
     productTable.setRowCount(0);
     //Inshallah!
@@ -386,6 +387,31 @@ public class productForm extends javax.swing.JFrame {
         if (productData[i][0] != null)
             productTable.addRow(productData[i]);
          }
+    }
+    private int findID(){
+        int[] productID = new int[100];
+        int missingNum = 1;
+        for (int i = 0; i < pnum; i++){
+            if (productData[i][0] != null){
+                productID[i] = Integer.parseInt(productData[i][0]);
+            }
+        }
+        for (int col = 0; col < pnum; col++){
+            for(int row = 0; row < pnum; row++){
+                if (productID[row] > productID[row+1]){
+                    int tempID = productID[row];
+                    productID[row] = productID[row+1];
+                    productID[row+1] = tempID;
+                }
+            }
+        }
+        for (int j = 0; j < 100; j++){
+            if (productID[j] == missingNum){
+                missingNum++;
+            }
+            
+        }
+    return missingNum;
     }
     /**
      * @param args the command line arguments
@@ -428,6 +454,7 @@ public class productForm extends javax.swing.JFrame {
     private javax.swing.JButton editBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
