@@ -4,6 +4,9 @@
  */
 package mycom.mycompany.ever1_salise;
 
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author picoh
@@ -26,22 +29,376 @@ public class supForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        sTable = new javax.swing.JTable();
+        editBtn = new javax.swing.JButton();
+        saveBtn = new javax.swing.JButton();
+        delBtn = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        supplierName = new javax.swing.JTextField();
+        supplierID = new javax.swing.JTextField();
+        supplierNumber = new javax.swing.JTextField();
+        paymentTerms = new javax.swing.JTextField();
+        supplierEmail = new javax.swing.JTextField();
+        dateAdded = new javax.swing.JTextField();
+        productsSupplied = new javax.swing.JTextField();
+        priority = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        contactP = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        lastTransaction = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
+
+        sTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Name", "ContactPer", "Number", "Email"
+            }
+        ));
+        sTable.setCellSelectionEnabled(true);
+        sTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                sTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(sTable);
+        sTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+
+        editBtn.setText("Edit");
+        editBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editBtnActionPerformed(evt);
+            }
+        });
+
+        saveBtn.setText("Save");
+        saveBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                saveBtnMouseClicked(evt);
+            }
+        });
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBtnActionPerformed(evt);
+            }
+        });
+
+        delBtn.setText("Delete");
+        delBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                delBtnMouseClicked(evt);
+            }
+        });
+        delBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delBtnActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 0, 36)); // NOI18N
+        jLabel11.setText("Supplier Form");
+
+        jLabel8.setText("Rating/Priority");
+
+        jLabel9.setText("Date Added");
+
+        supplierName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supplierNameActionPerformed(evt);
+            }
+        });
+
+        supplierID.setEditable(false);
+
+        productsSupplied.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productsSuppliedActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Supplier ID");
+
+        jLabel2.setText("Supplier Name");
+
+        jLabel3.setText("Contact Person");
+
+        jLabel4.setText("Phone Number");
+
+        jLabel5.setText("Email Address");
+
+        jLabel6.setText("Payment Terms");
+
+        jLabel7.setText("Products Supplied");
+
+        jLabel10.setText("Last Transaction Date");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 565, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5))
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel7)
+                                        .addComponent(jLabel8)
+                                        .addComponent(jLabel9)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel10))
+                                    .addGap(2, 2, 2)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(priority, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                                            .addComponent(productsSupplied, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(paymentTerms)
+                                            .addComponent(dateAdded)
+                                            .addComponent(supplierEmail, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(supplierNumber, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(contactP, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(supplierName, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addComponent(supplierID, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lastTransaction, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel2)
+                                .addComponent(editBtn)
+                                .addComponent(delBtn)
+                                .addComponent(saveBtn)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(213, 213, 213)
+                        .addComponent(jLabel11)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(supplierID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(supplierName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(contactP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(supplierNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(supplierEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(paymentTerms, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(productsSupplied, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(priority, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(dateAdded, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(lastTransaction, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(saveBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(editBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(delBtn)
+                        .addGap(14, 14, 14))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+String[][] supplierData = new String[100][10];
+int snum = 0;
+    private void sTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sTableMouseClicked
+        // TODO add your handling code here:
+        int[] selectedRow = sTable.getSelectedRows();
+        String selectedID;
+        supplierID.setText(sTable.getValueAt(selectedRow[0],0).toString());
+        supplierName.setText(sTable.getValueAt(selectedRow[0],1).toString());
+        contactP.setText(sTable.getValueAt(selectedRow[0],2).toString());
+        supplierNumber.setText(sTable.getValueAt(selectedRow[0],3).toString());
+        contactP.setText(sTable.getValueAt(selectedRow[0],4).toString());
+        supplierNumber.setText(sTable.getValueAt(selectedRow[0],5).toString());
+        supplierEmail.setText(sTable.getValueAt(selectedRow[0],6).toString());
+    }//GEN-LAST:event_sTableMouseClicked
 
+    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
+        // TODO add your handling code here:
+        int[] selectedRow = sTable.getSelectedRows();
+        String editableID = supplierID.getText();
+        for(int i = 0; i < snum; i++){
+            if (supplierData[i][0].equals(editableID)){
+                supplierData[i][1] = supplierName.getText();
+                supplierData[i][2] = contactP.getText();
+                supplierData[i][3] = supplierNumber.getText();
+                supplierData[i][4] = supplierEmail.getText();
+                supplierData[i][5] = paymentTerms.getText();
+                supplierData[i][6] = productsSupplied.getText();
+                supplierData[i][7] = priority.getText();
+                supplierData[i][8] = dateAdded.getText();
+                supplierData[i][9] = lastTransaction.getText();
+                refreshTable();
+                
+                supplierID.setText(Integer.toString(findID()));
+            }
+        }
+        JOptionPane.showMessageDialog(editBtn,"Entry Edited","Supplier Form", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_editBtnActionPerformed
+
+    private void saveBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveBtnMouseClicked
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_saveBtnMouseClicked
+
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+        DefaultTableModel productTable = (DefaultTableModel) sTable.getModel();
+
+        supplierData[snum][0] = supplierID.getText();
+        supplierData[snum][1] = supplierName.getText();
+        supplierData[snum][2] = contactP.getText();
+        supplierData[snum][3] = supplierNumber.getText();
+        supplierData[snum][4] = supplierEmail.getText();
+        supplierData[snum][5] = paymentTerms.getText();
+        supplierData[snum][6] = productsSupplied.getText();
+        supplierData[snum][7] = priority.getText();
+        supplierData[snum][8] = dateAdded.getText();
+        supplierData[snum][9] = lastTransaction.getText();
+        productTable.addRow(supplierData[snum]);
+        supplierID.setText(Integer.toString(findID()));
+        JOptionPane.showMessageDialog(saveBtn,"Entry Saved","Supplier Form", JOptionPane.INFORMATION_MESSAGE);
+        refreshTable();
+        snum++;
+    }//GEN-LAST:event_saveBtnActionPerformed
+
+    private void delBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_delBtnMouseClicked
+        // TODO add your handling code here:
+        String deletableID = supplierID.getText();
+        for (int i = 0; i < snum; i++){
+            if ( supplierData[i][0].equals(deletableID)){
+                for (int j = i; j < snum - 1; j++){
+                    supplierData[j] = supplierData[j+1];
+                }
+                // sets the last row to blank just in case
+                supplierData[snum-1] = new String[10];
+                snum--;
+                break;
+            }
+        }
+        JOptionPane.showMessageDialog(delBtn,"Entry Deleted","Supplier Form", JOptionPane.INFORMATION_MESSAGE);
+        supplierID.setText(Integer.toString(findID()));
+        supplierName.setText(null);
+        contactP.setText(null);
+        supplierNumber.setText(null);
+        supplierEmail.setText(null);
+        paymentTerms.setText(null);
+        productsSupplied.setText(null);
+        priority.setText(null);
+        dateAdded.setText(null);
+        lastTransaction.setText(null);
+        refreshTable();
+    }//GEN-LAST:event_delBtnMouseClicked
+
+    private void delBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_delBtnActionPerformed
+
+    private void supplierNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supplierNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_supplierNameActionPerformed
+
+    private void productsSuppliedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productsSuppliedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_productsSuppliedActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        supplierID.setText(Integer.toString(findID()));
+    }//GEN-LAST:event_formWindowActivated
+public  void refreshTable(){
+    DefaultTableModel supTable = (DefaultTableModel) sTable.getModel();
+    supTable.setRowCount(0);
+    //Inshallah!
+    for (int i = 0; i <= snum; i++){
+        if (supplierData[i][0] != null)
+            supTable.addRow(supplierData[i]);
+         }
+    }
+//   
+//    
+    private int findID(){
+        int[] supplierIDArray = new int[100];
+        int missingNum = 1;
+        for (int i = 0; i < snum; i++){
+            if (supplierData[i][0] != null){
+                supplierIDArray[i] = Integer.parseInt(supplierData[i][0]);
+            }
+        }
+        for (int col = 0; col < snum; col++){
+            for(int row = 0; row < snum; row++){
+                if (supplierIDArray[row] > supplierIDArray[row+1]){
+                    int tempID = supplierIDArray[row];
+                    supplierIDArray[row] = supplierIDArray[row+1];
+                    supplierIDArray[row+1] = tempID;
+                }
+            }
+        }
+        for (int j = 0; j < 100; j++){
+            if (supplierIDArray[j] == missingNum){
+                missingNum++;
+            }
+            
+        }
+    return missingNum;
+    }
     /**
      * @param args the command line arguments
      */
@@ -78,5 +435,31 @@ public class supForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField contactP;
+    private javax.swing.JTextField dateAdded;
+    private javax.swing.JButton delBtn;
+    private javax.swing.JButton editBtn;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField lastTransaction;
+    private javax.swing.JTextField paymentTerms;
+    private javax.swing.JTextField priority;
+    private javax.swing.JTextField productsSupplied;
+    private javax.swing.JTable sTable;
+    private javax.swing.JButton saveBtn;
+    private javax.swing.JTextField supplierEmail;
+    private javax.swing.JTextField supplierID;
+    private javax.swing.JTextField supplierName;
+    private javax.swing.JTextField supplierNumber;
     // End of variables declaration//GEN-END:variables
 }
