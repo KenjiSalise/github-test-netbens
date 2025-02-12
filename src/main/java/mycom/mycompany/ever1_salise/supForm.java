@@ -332,6 +332,7 @@ int snum = 0;
                 snum--;
                 break;
             }
+            //hello
         }
         JOptionPane.showMessageDialog(delBtn,"Entry Deleted","Supplier Form", JOptionPane.INFORMATION_MESSAGE);
         supplierID.setText(Integer.toString(findID()));
