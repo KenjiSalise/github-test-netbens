@@ -57,7 +57,7 @@ public class productForm extends javax.swing.JFrame {
         delBtn = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        pTable1 = new javax.swing.JTable();
+        sameProduct = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         uniqueProduct = new javax.swing.JTable();
         jLabel12 = new javax.swing.JLabel();
@@ -158,7 +158,7 @@ public class productForm extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("UD Digi Kyokasho N-B", 0, 36)); // NOI18N
         jLabel11.setText("Products Stock-In/Stock-Out");
 
-        pTable1.setModel(new javax.swing.table.DefaultTableModel(
+        sameProduct.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -166,14 +166,14 @@ public class productForm extends javax.swing.JFrame {
                 "Product ID", "Batch #", "Supplier", "Quantity", "Unit Price", "Date Received", "Orders"
             }
         ));
-        pTable1.setCellSelectionEnabled(true);
-        pTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        sameProduct.setCellSelectionEnabled(true);
+        sameProduct.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pTable1MouseClicked(evt);
+                sameProductMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(pTable1);
-        pTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jScrollPane2.setViewportView(sameProduct);
+        sameProduct.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         uniqueProduct.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -270,7 +270,6 @@ public class productForm extends javax.swing.JFrame {
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel9))
                                 .addGap(0, 2, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -385,7 +384,7 @@ public class productForm extends javax.swing.JFrame {
 
     private void stockInBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockInBtnActionPerformed
         DefaultTableModel productTable = (DefaultTableModel) uniqueProduct.getModel();
-        DefaultTableModel batchTable = (DefaultTableModel) pTable1.getModel();
+        DefaultTableModel batchTable = (DefaultTableModel) batchTable.getModel();
         productData[pnum][0] = productID.getText();
         productData[pnum][1] = productType.getText();
         productData[pnum][2] = productDesc.getText();
@@ -402,7 +401,7 @@ public class productForm extends javax.swing.JFrame {
             String totalCost = Integer.toString(totalCost(pnum));
             String totalPrice = Integer.toString(totalPrice(pnum));
             String totalQuantity = Integer.toString(totalQuant(pnum));;
-            productTable.addRow(new String[]{productData[pnum][0],productData[pnum][1],productData[pnum][2],totalCost,totalPrice,totalQuantity});
+            productTable.addRow(new String[]{productData[pnum][0],productData[pnum][1],productData[pnum][2],totalQuantity,totalCost,totalPrice});
     }
         System.out.print(pnum);
         productID.setText(Integer.toString(findID()));
@@ -474,9 +473,9 @@ public class productForm extends javax.swing.JFrame {
         dateReceived.setText(date());
     }//GEN-LAST:event_formWindowActivated
 
-    private void pTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pTable1MouseClicked
+    private void sameProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sameProductMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_pTable1MouseClicked
+    }//GEN-LAST:event_sameProductMouseClicked
 
     private void uniqueProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_uniqueProductMouseClicked
         // TODO add your handling code here:
@@ -491,18 +490,20 @@ public class productForm extends javax.swing.JFrame {
     }//GEN-LAST:event_overheadCostActionPerformed
      public  void refreshTable(){
     DefaultTableModel productTable = (DefaultTableModel) uniqueProduct.getModel();
-    DefaultTableModel batchTable = (DefaultTableModel) pTable1.getModel();
+    DefaultTableModel batchTable = (DefaultTableModel) sameProduct.getModel();
     productTable.setRowCount(0);
     batchTable.setRowCount(0);
     
     //Inshallah!
     for (int i = 0; i <= pnum; i++){
+        int batchNum = 1;
         if (productData[i][0] != null){
             if(Boolean.parseBoolean(productData[i][11])){
             String totalCost = Integer.toString(totalCost(i));
             String totalPrice = Integer.toString(totalPrice(i));
             String totalQuantity = Integer.toString(totalQuant(i));;
-            productTable.addRow(new String[]{productData[i][0],productData[i][1],productData[i][2],totalCost,totalPrice,totalQuantity});
+            productTable.addRow(new String[]{productData[i][0],productData[i][1],productData[i][2],totalQuantity,totalCost,totalPrice});
+            
             }
         }
     }   
@@ -601,6 +602,9 @@ public class productForm extends javax.swing.JFrame {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         return dateFormat.format(dateToday);
     }
+    private void batchTable(){
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -660,12 +664,12 @@ public class productForm extends javax.swing.JFrame {
     private javax.swing.JTextField laborCost;
     private javax.swing.JTextField overheadCost;
     private javax.swing.JTable pTable;
-    private javax.swing.JTable pTable1;
     private javax.swing.JTextField productDesc;
     private javax.swing.JTextField productID;
     private javax.swing.JTextField productType;
     private javax.swing.JTextField quantityOne;
     private javax.swing.JTextField quantityTwo;
+    private javax.swing.JTable sameProduct;
     private javax.swing.JButton stockInBtn;
     private javax.swing.JTextField supplier;
     private javax.swing.JTextField thresholdQuantity;
