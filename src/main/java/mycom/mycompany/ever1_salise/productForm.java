@@ -164,7 +164,7 @@ public class productForm extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Product ID", "Batch #", "Supplier", "Quantity", "Unit Price", "Date Received", "Orders"
+                "Product ID", "Batch #", "Supplier", "Quantity", "Product Price", "Unit Price", "Date Received", "Orders"
             }
         ));
         sameProduct.setCellSelectionEnabled(true);
@@ -400,16 +400,13 @@ public class productForm extends javax.swing.JFrame {
         String editableID = productID.getText();
         for(int i = 0; i < pnum; i++){
         if (productData[i][0].equals(editableID)){
-            productData[i][1] = productType.getText();
-            productData[i][2] = productDesc.getText();
             productData[i][3] = supplier.getText();
             productData[i][4] = unitCost.getText();
-            productData[i][5] = thresholdQuantity.getText();
-            productData[i][6] = Integer.toString(Integer.parseInt(quantityOne.getText())+Integer.parseInt(quantityTwo.getText()));
-            productData[i][7] = dateReceived.getText();
+            productData[i][6] = quantityOne.getText();
             refreshProductTable();
+            refreshBatchTable();
             JOptionPane.showMessageDialog(editBtn,"Information Edited","Customer Form", JOptionPane.INFORMATION_MESSAGE);
-            productID.setText(Integer.toString(findID()));
+            
             }
         }
     }//GEN-LAST:event_editBtnActionPerformed
@@ -508,6 +505,9 @@ public class productForm extends javax.swing.JFrame {
 
     private void sameProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sameProductMouseClicked
         // TODO add your handling code here:
+        int selected = sameProduct.getSelectedRow();
+        String ID = sameProduct.getValueAt(selected,0).toString();
+        refreshInputBoxes(ID);
     }//GEN-LAST:event_sameProductMouseClicked
 
     private void uniqueProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_uniqueProductMouseClicked
@@ -532,11 +532,19 @@ public class productForm extends javax.swing.JFrame {
     private void saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseClicked
         // TODO add your handling code here:
         for (int i = 0; i < pnum; i++){
-            if (productData[i][0].equals(productID.getText()))
+            if (productData[i][0].equals(productID.getText())){
             productData[i][8] = laborCost.getText();
-            productData[i][19] = overheadCost.getText();
+            productData[i][9] = overheadCost.getText();
             productData[i][10] = desiredProfit.getText();
+            break;
+            }
+            
         }
+        productID.setText(Integer.toString(findID()));
+        refreshBatchTable();
+        refreshProductTable();
+        refreshInputBoxes(productID.getText());
+        
     }//GEN-LAST:event_saveMouseClicked
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
@@ -577,7 +585,7 @@ public class productForm extends javax.swing.JFrame {
         int batchNumber = 1;
         for (int i = 0; i < pnum; i++){
             if (productData[i][1].equals(productType)&&productData[i][2].equals(productDesc)){
-                batchTable.addRow(new String[]{productData[i][0],Integer.toString(batchNumber), productData[i][3], productData[i][6], "hello",productData[i][7],"0"});
+                batchTable.addRow(new String[]{productData[i][0],Integer.toString(batchNumber), productData[i][3], productData[i][6], Integer.toString(productCost(i)),Integer.toString(unitPrice(i)),productData[i][7],"0"});
                 batchNumber++;
             }
             }
@@ -585,8 +593,36 @@ public class productForm extends javax.swing.JFrame {
         }
 
     
-    private void refreshInputBoxes(){
-        int selectedBatch = sameProduct.getSelectedRow();
+    private void refreshInputBoxes(String productSelected){
+        for (int i = 0; i < pnum; i++){
+            if (productData[i][0].equals(productSelected)){
+                productID.setText(productData[i][0]);
+                productType.setText(productData[i][1]);
+                productDesc.setText(productData[i][2]);
+                supplier.setText(productData[i][3]);
+                unitCost.setText(productData[i][4]);
+                thresholdQuantity.setText(productData[i][5]);
+                quantityOne.setText(productData[i][6]);
+                dateReceived.setText(productData[i][7]);
+                laborCost.setText(productData[i][8]);
+                overheadCost.setText(productData[i][9]);
+                desiredProfit.setText(productData[i][10]);
+                break;
+            }
+            else{
+                productType.setText(null);
+                productDesc.setText(null);
+                supplier.setText(null);
+                unitCost.setText(null);
+                thresholdQuantity.setText(null);
+                quantityOne.setText(null);
+                dateReceived.setText(null);
+                laborCost.setText(null);
+                overheadCost.setText(null);
+                desiredProfit.setText(null);
+                
+            }
+        }
     }
      
     private boolean isUnique(int arrayNum){
@@ -627,10 +663,8 @@ public class productForm extends javax.swing.JFrame {
     private int totalCost(int productID){
         //first adds the data from the selected unique id
         int sum = 0;
-        if (productData[productID][4] != null &&productData[productID][8] != null && productData[productID][9] != null){
-              sum += Integer.parseInt(productData[productID][4])+
-                Integer.parseInt(productData[productID][8])+
-                Integer.parseInt(productData[productID][9]);
+        if (productData[productID][4] != null){
+              sum += Integer.parseInt(productData[productID][4]);
         }
         for (int sameID = 0; sameID < pnum; sameID++){
             if (sameID != productID){
@@ -638,10 +672,8 @@ public class productForm extends javax.swing.JFrame {
                  if (productData[sameID][1].equals(productData[productID][1])
                     && productData[sameID][2].equals(productData[productID][2])){
                      //adds the data that has been verified elmao
-                     if (productData[sameID][4] != null &&productData[sameID][8] != null && productData[sameID][9] != null){
-                     sum+= Integer.parseInt(productData[sameID][4])+
-                             Integer.parseInt(productData[sameID][8])+
-                             Integer.parseInt(productData[sameID][9]);
+                     if (productData[sameID][4] != null){
+                     sum+= Integer.parseInt(productData[sameID][4]);
                      }
                  }
             }
@@ -686,6 +718,27 @@ public class productForm extends javax.swing.JFrame {
            }
         }
         return sum;
+    }
+    private int unitPrice(int productID ){
+     int sum = 0;
+      if (productData[productID][4]!=null&&
+         productData[productID][8]!=null&&
+         productData[productID][9]!=null&&
+         productData[productID][10]!=null){
+         sum+=Integer.parseInt(productData[productID][4])+
+              Integer.parseInt(productData[productID][8])+
+              Integer.parseInt(productData[productID][9])+
+              Integer.parseInt(productData[productID][10]);
+     }
+      return sum;
+    }
+    
+    private int productCost(int productID){
+     int sum = 0;
+     if (productData[productID][4]!=null){
+         sum+=Integer.parseInt(productData[productID][4]);
+     }
+     return sum;
     }
     private static String date(){
         Date dateToday = new Date();
