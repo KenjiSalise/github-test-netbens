@@ -534,7 +534,7 @@ public class productForm extends javax.swing.JFrame {
         for (int i = 0; i < pnum; i++){
             if (productData[i][0].equals(productID.getText()))
             productData[i][8] = laborCost.getText();
-            productData[i][19] = overheadCost.getText();
+            productData[i][9] = overheadCost.getText();
             productData[i][10] = desiredProfit.getText();
         }
     }//GEN-LAST:event_saveMouseClicked
