@@ -684,28 +684,40 @@ public class productForm extends javax.swing.JFrame {
         //first adds the data from the selected unique id
         int sum = 0;
         
-        if (productData[productID][4] != null &&productData[productID][8] != null && productData[productID][9] != null &&productData[productID][10] != null){
-         sum = Integer.parseInt(productData[productID][4])+
-                Integer.parseInt(productData[productID][8])+
-                Integer.parseInt(productData[productID][9])+
-                Integer.parseInt(productData[productID][10]);
+        if (productData[productID][4] != null){
+         sum = Integer.parseInt(productData[productID][4]);
+        }
+        if (productData[productID][8] != null){ 
+                sum+=Integer.parseInt(productData[productID][8]);
+        }
+        if (productData[productID][9] != null ){
+                sum+=Integer.parseInt(productData[productID][9]);
+            }
+        if (productData[productID][10] != null){
+                sum+=Integer.parseInt(productData[productID][10]);
         }
         for (int sameID = 0; sameID < pnum; sameID++){
             if (sameID != productID){
                 //checks if its the same lmao(see totalCost())
                  if (productData[sameID][1].equals(productData[productID][1])
                     && productData[sameID][2].equals(productData[productID][2])){
-                     if (productData[sameID][4] != null &&productData[sameID][8] != null && productData[sameID][9] != null &&productData[sameID][10] != null){
-                     sum+= Integer.parseInt(productData[sameID][4])+
-                             Integer.parseInt(productData[sameID][8])+
-                             Integer.parseInt(productData[sameID][9])+
-                             Integer.parseInt(productData[sameID][10]);
+                     if (productData[sameID][4] != null){ 
+                     sum+= Integer.parseInt(productData[sameID][4]);
+                         if (productData[sameID][8] != null){ 
+                             sum+= Integer.parseInt(productData[sameID][8]);
+                             }
+                         if (productData[sameID][9] != null ){
+                             sum+=Integer.parseInt(productData[sameID][9]);
+                         }
+                         if (productData[sameID][10] != null){
+                             sum+=Integer.parseInt(productData[sameID][10]);
+                         }
                      }
                  }
             }
         }
         return sum;
-    }
+    }   
     private int totalQuant(int productID){
         // same logic as totalCost lowkey
         int sum = 0;
